@@ -1,0 +1,25 @@
+/* Navbar */
+
+.navbar {
+  background-color: #dedede;
+  color: var(---color);
+  height: 70px;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: var(---color);
+  padding: 10px;
+  margin: 0 10px;
+}
+
+.navbar a:hover {
+  color: var(--secondary-color);
+}
+
+.navbar .flex {
+  justify-content: space-between;
+}
