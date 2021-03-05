@@ -11,11 +11,20 @@ const App = () => {
       <Header />
       <main className="py-3">
         <div className="container">
-          <Route path="/" exact>
-            <HomeScreen />
-          </Route>
           <Route path="/user/:id">
             <UserScreen />
+          </Route>
+          <Route path="/search/:keyword" exact>
+            <HomeScreen />
+          </Route>
+          <Route path="/page/:pageNumber" exact>
+            <HomeScreen />
+          </Route>
+          <Route path="/search/:keyword/page/:pageNumber">
+            <HomeScreen />
+          </Route>
+          <Route path="/" exact>
+            <HomeScreen />
           </Route>
         </div>
       </main>

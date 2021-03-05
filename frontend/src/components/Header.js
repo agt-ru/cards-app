@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+
+import SearchBox from "../components/SearchBox";
 
 import "../styles/Header.css";
 
@@ -7,13 +9,24 @@ const Header = () => {
   return (
     <div className="navbar">
       <div className="container flex">
-        <h1 className="logo">
-          <Link to="/">Cards</Link>
-        </h1>
+        <ul>
+          <li>
+            <h1 className="logo">
+              <Link to="/">Cards</Link>
+            </h1>
+          </li>
+          <li>
+            <Route
+              render={({ history, location }) => (
+                <SearchBox history={history} location={location} />
+              )}
+            />
+          </li>
+        </ul>
         <nav>
           <ul>
             <li>
-              <Link to="!#">
+              <Link to="/">
                 <i className="fas fa-id-card"></i>
               </Link>
             </li>

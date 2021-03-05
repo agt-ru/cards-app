@@ -18,7 +18,7 @@
   display: inline-block;
   padding: 10px 30px;
   cursor: pointer;
-  background: var(--primary-color);
+  background: var(--background-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -31,6 +31,34 @@
 
 .btn:hover {
   transform: scale(0.98);
+}
+
+.loader {
+  display: block;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+}
+
+path {
+  fill: var(--secondary-color);
+}
+
+.alertMsg.danger {
+  margin: 10px;
+  padding: 10px 30px 10px 50px;
+  position: relative;
+  border-left: 10px solid #c53734;
+  background: #d9534f;
+  color: white;
+}
+
+.alertMsg .msgIcon {
+  font-size: 20px !important;
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 15px;
 }
 
 .flex {
