@@ -1,21 +1,26 @@
 import React from "react";
-import '../styles/Header.css';
+import { Link } from "react-router-dom";
+
+import "../styles/Header.css";
 
 const Header = () => {
   return (
     <div className="navbar">
       <div className="container flex">
         <h1 className="logo">
-          <a href="!#">Cards</a>
+          <Link to="/">Cards</Link>
         </h1>
         <nav>
           <ul>
             <li>
-              <a href="!#">
+              <Link to="!#">
                 <i className="fas fa-id-card"></i>
-              </a>
+              </Link>
             </li>
             <li>
+              {/* <Link to="https://github.com/agt-ru">
+                <i className="fab fa-github"></i>
+              </Link> */}
               <a href="https://github.com/agt-ru">
                 <i className="fab fa-github"></i>
               </a>

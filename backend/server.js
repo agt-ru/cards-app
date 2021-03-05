@@ -11,9 +11,9 @@ const app = express();
 app.use(express.json());
 
 // @desc    Fetch all users
-// @route   GET /?page=1..n
+// @route   GET /api/?page=1..n
 // @access  Public
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   const pageSize = 5;
   const page = Math.floor(Math.abs(Number(req.query.page) || 1));
 
@@ -27,7 +27,8 @@ app.get("/", (req, res) => {
     usersMatchCount = users.length;
   }
 
-  const usersOnPage = usersMatch.slice((page - 1) * pageSize, page * pageSize);
+  let usersOnPage = usersMatch.slice((page - 1) * pageSize, page * pageSize);
+  usersOnPage = usersOnPage.map(user => ({...user, id: user.id["$oid"]}));
   res.json({
     usersOnPage,
     page,
@@ -36,9 +37,9 @@ app.get("/", (req, res) => {
 });
 
 // @desc    Fetch single user
-// @route   GET /get/:id
+// @route   GET /api/get/:id
 // @access  Public
-app.get("/get/:id", (req, res) => {
+app.get("/api/get/:id", (req, res) => {
   const user = users.find((u) => u.id["$oid"] === req.params.id);
   if (user) {
     res.json(user);
