@@ -7,12 +7,21 @@ import {
   USER_DETAILS_FAIL,
 } from "../constants/userConstants";
 
-export const userListReducer = (state = { users: [] }, action) => {
+export const userListReducer = (
+  state = {},
+  action
+) => {
   switch (action.type) {
     case USER_LIST_REQUEST:
       return { loading: true, users: [] };
     case USER_LIST_SUCCESS:
-      return { loading: false, users: action.payload.usersOnPage };
+      return {
+        loading: false,
+        users: action.payload.usersOnPage,
+        pages: action.payload.pages,
+        page: action.payload.page,
+        pageSize: action.payload.pageSize,
+      };
     case USER_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:

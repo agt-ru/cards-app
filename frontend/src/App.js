@@ -14,13 +14,16 @@ const App = () => {
           <Route path="/user/:id">
             <UserScreen />
           </Route>
-          <Route path="/search/:keyword" exact>
+          <Route path="/search/:keyword/size/:pageSize" exact>
             <HomeScreen />
           </Route>
-          <Route path="/page/:pageNumber" exact>
+          <Route path="/page/:pageNumber/size/:pageSize" exact>
             <HomeScreen />
           </Route>
-          <Route path="/search/:keyword/page/:pageNumber">
+          <Route path="/search/:keyword/page/:pageNumber/size/:pageSize">
+            <HomeScreen />
+          </Route>
+          <Route path="/size/:pageSize" exact>
             <HomeScreen />
           </Route>
           <Route path="/" exact>

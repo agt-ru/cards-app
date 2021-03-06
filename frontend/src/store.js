@@ -8,7 +8,12 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
 });
 
-const initialState = {};
+const initialState = {
+  userList: {
+    users: [],
+    pageSize: "10",
+  },
+};
 
 const middleware = [thunk];
 

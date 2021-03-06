@@ -1,20 +1,20 @@
 import React from "react";
-import Pagination from "../components/Pagination";
-import { Link } from "react-router-dom";
+import Pagination from "react-router-pagination";
 
-const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
+const Paginate = ({ pages, page, keyword = "" }) => {
+  const route = keyword
+    ? "/search/:keyword/page/:pageNumber"
+    : "/page/:pageNumber";
+  const match = {
+    path: route,
+    params: {
+      keyword: keyword,
+      pageNumber: page,
+    },
+  };
   return (
     pages > 1 && (
-      <Pagination>
-        {[...Array(pages).keys()].map((x) => (
-          <Link
-            key={x + 1}
-            to={keyword ? `/search/${keyword}/page/${x + 1}` : `/page/${x + 1}`}
-          >
-            {/* <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item> */}
-          </Link>
-        ))}
-      </Pagination>
+      <Pagination totalPages={pages} pageNumber={page} match={match} />
     )
   );
 };

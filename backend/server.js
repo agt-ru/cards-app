@@ -10,13 +10,16 @@ const app = express();
 
 app.use(express.json());
 
+let someValue = 6;
+
 // @desc    Fetch all users
-// @route   GET /api/?page=1..n
+// @route   GET /api
+// /api?keyword=${keyword}&pageNumber=${pageNumber}&pageSize=${pageSize}
 // @access  Public
 app.get("/api", (req, res) => {
-  const pageSize = 5;
-  const page = Math.floor(Math.abs(Number(req.query.page) || 1));
-
+  console.log(++someValue);
+  const pageSize = Math.floor(Math.abs(Number(req.query.pageSize) || 10));
+  const page = Math.floor(Math.abs(Number(req.query.pageNumber) || 1));
   let usersMatch, usersMatchCount;
   if (req.query.keyword) {
     const myRe = new RegExp(req.query.keyword, "i");
@@ -26,13 +29,14 @@ app.get("/api", (req, res) => {
     usersMatch = users;
     usersMatchCount = users.length;
   }
-
+  const pages = Math.ceil(usersMatchCount / pageSize);
   let usersOnPage = usersMatch.slice((page - 1) * pageSize, page * pageSize);
-  usersOnPage = usersOnPage.map(user => ({...user, id: user.id["$oid"]}));
+  usersOnPage = usersOnPage.map((user) => ({ ...user, id: user.id["$oid"] }));
   res.json({
     usersOnPage,
     page,
-    pages: Math.ceil(usersMatchCount / pageSize),
+    pages,
+    pageSize: String(pageSize),
   });
 });
 

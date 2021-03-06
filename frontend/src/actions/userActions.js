@@ -8,11 +8,11 @@ import {
   USER_DETAILS_FAIL,
 } from "../constants/userConstants";
 
-export const listUsers = (keyword = "", pageNumber = "") => async (dispatch) => {
+export const listUsers = (keyword = "", pageNumber = "", pageSize = "") => async (dispatch) => {
   try {
     dispatch({ type: USER_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api?keyword=${keyword}&pageNumber=${pageNumber}`);
+    const { data } = await axios.get(`/api?keyword=${keyword}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
 
     dispatch({
       type: USER_LIST_SUCCESS,
