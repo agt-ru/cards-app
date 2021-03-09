@@ -1,5 +1,6 @@
 import React from "react";
 import Pagination from "react-router-pagination";
+import "../styles/Paginate.css";
 
 const Paginate = ({ pages, page, keyword = "", usersPerPage }) => {
   const route = keyword

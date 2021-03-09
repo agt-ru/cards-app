@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import "../styles/SearchBox.css";
 
 const SearchBox = ({ history, location, match }) => {
   const [keyword, setKeyword] = useState("");
@@ -28,16 +29,16 @@ const SearchBox = ({ history, location, match }) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className="flex">
       <input
         type="text"
         name="q"
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="Search users..."
-        className="mr-sm-2 ml-sm-5"
+        className="search-input"
         value={keyword}
       ></input>
-      <button type="submit" className="p-2 btn">
+      <button type="submit" className="btn search-button">
         Search
       </button>
     </form>

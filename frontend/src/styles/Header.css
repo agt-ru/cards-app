@@ -3,11 +3,7 @@
 .navbar {
   background-color: #dedede;
   color: var(---color);
-  height: 70px;
-}
-
-.navbar ul {
-  display: flex;
+  height: 80px;
 }
 
 .navbar a {

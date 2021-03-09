@@ -1,17 +1,8 @@
 .container {
-  max-width: 1600px;
+  max-width: 1500px;
   margin: 0 auto;
   overflow: auto;
   padding: 0 40px;
-}
-
-.card {
-  background-color: var(--second-back-color);
-  color: var(--color);
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  /* padding: 20px; */
-  /* margin: 10px; */
 }
 
 .btn {
@@ -20,9 +11,11 @@
   cursor: pointer;
   background: var(--background-color);
   color: white;
+  font-weight: bold;
   border: none;
   border-radius: 5px;
-  /* height: 60px; */
+  outline: none;
+  font-size: 1rem;
 }
 
 .btn-outline {
@@ -31,7 +24,7 @@
 }
 
 .btn:hover {
-  transform: scale(0.98);
+  color: var(--secondary-color);
 }
 
 .loader {
@@ -43,15 +36,6 @@
 
 path {
   fill: var(--secondary-color);
-}
-
-.pagination {
-  display: flex;
-}
-
-.pagination li span {
-  margin: 0.5rem;
-  color: black;
 }
 
 .alertMsg.danger {
@@ -78,11 +62,6 @@ path {
   height: 100%;
 }
 
-.align-right {
-  /* align-items: flex-end; */
-  justify-content: flex-end;
-}
-
 .text-center {
   text-align: center;
 }
@@ -90,14 +69,10 @@ path {
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-gap: 0px 20px;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.grid-3 {
-  /* grid-template-columns: repeat(4, 1fr); */
 }
 
 /* Margin */

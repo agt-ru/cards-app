@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listUsers } from "../actions/userActions";
@@ -8,6 +8,7 @@ import User from "../components/User";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Paginate from "../components/Paginate";
+import "../styles/Dropdown.css";
 
 const HomeScreen = () => {
   const match = useRouteMatch();
@@ -16,8 +17,6 @@ const HomeScreen = () => {
   const keyword = match.params.keyword;
   let pageNumber = match.params.pageNumber || 1;
   let pageSize = match.params.pageSize || 5;
-
-  const [dropdownValue, setDropdownValue] = useState(pageSize);
 
   const dispatch = useDispatch();
 
@@ -36,17 +35,18 @@ const HomeScreen = () => {
 
   return (
     <>
-      <div className="page-size flex align-right">
-        <span>Page Size: </span>
-        <Dropdown
-          options={pageSizeOptions}
-          onChange={changeUsersPerPage}
-          value={usersPerPage}
-          placeholder=""
-        />
+      <div className="flex home-top">
+        <h1>Users</h1>
+        <div className="page-size flex">
+          <span>Page Size: </span>
+          <Dropdown
+            options={pageSizeOptions}
+            onChange={changeUsersPerPage}
+            value={usersPerPage}
+            placeholder="5"
+          />
+        </div>
       </div>
-
-      <h1>Users</h1>
       {keyword && (
         <Link
           to={`/${
@@ -54,7 +54,7 @@ const HomeScreen = () => {
           }`}
           className="btn"
         >
-          Go Back
+          GO BACK
         </Link>
       )}
       {loading ? (
@@ -63,11 +63,9 @@ const HomeScreen = () => {
         <Message>{error}</Message>
       ) : (
         <div className="my-2">
-          <div className="container grid grid-3">
+          <div className="container grid">
             {users.map((user) => (
-              <div key={user.id} className="card flex">
-                <User user={user} />
-              </div>
+              <User user={user} />
             ))}
           </div>
           <Paginate

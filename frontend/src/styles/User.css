@@ -1,0 +1,52 @@
+.card {
+  background-color: var(--second-back-color);
+  color: var(--color);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  width: 280px;
+  height: 350px;
+  flex-direction: column;
+}
+
+.card.user-summary:hover {
+  transform: scale(0.99);
+  transition: transform 0.2s ease-in;
+}
+
+.card .user-name {
+  margin-top: 20px;
+}
+
+.card.user-details {
+  margin-top: 20px;
+  height: 650px;
+  width: 600px;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-details ul {
+  color: var(--color);
+  background-color: var(--background-color);
+  border-radius: 10px;
+  margin-top: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  overflow: hidden;
+}
+
+.user-details-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 5px;
+}
+
+.user-details-motto {
+  color: white;
+  padding: 5px 10px;
+  margin: 10px;
+  border-radius: 5px;
+}

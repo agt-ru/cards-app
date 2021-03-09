@@ -1,18 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles/User.css";
 
 const User = ({ user }) => {
   return (
-    <div className="card my-3 p-3">
-      <Link to={`/user/${user.id}`}>
+    <Link to={`/user/${user.id}`}>
+      <div className="card flex my-2 user-summary">
         <img src={user.photo} alt="User" />
-      </Link>
-      <Link to={`/user/${user.id}`}>
-        <div className="text-center">
+        <div className="user-name">
           <strong>{user.name}</strong>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 
