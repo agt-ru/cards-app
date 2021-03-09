@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch, useHistory } from "react-router-dom";
 
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -8,10 +8,15 @@ import { listUserDetails } from "../actions/userActions";
 
 const UserScreen = () => {
   let match = useRouteMatch();
+  let history = useHistory();
 
   const dispatch = useDispatch();
+
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
+
+  const userList = useSelector((state) => state.userList);
+  const { usersPerPage } = userList;  
 
   useEffect(() => {
     dispatch(listUserDetails(match.params.id));
@@ -19,9 +24,13 @@ const UserScreen = () => {
 
   return (
     <>
-      <Link className="btn my-3" to="/">
+      {/* <Link className="btn my-3" to="/">
         Go Back
-      </Link>
+      </Link> */}
+        {/* <Link to={`/${usersPerPage && (usersPerPage !== 5 ? `size/${usersPerPage}` : '')}`} className="btn">
+          Go Back
+        </Link> */}
+        <button onClick={() => history.goBack()}>GO BACK A PAGE</button>
 
       {loading ? (
         <Loader />
@@ -44,7 +53,7 @@ const UserScreen = () => {
                   <div className="card">
                     {user.friends &&
                       user.friends.map((friend) => (
-                        <div id={friend}>{friend}</div>
+                        <div id={friend} key={friend}>{friend}</div>
                       ))}
                   </div>
                 </li>

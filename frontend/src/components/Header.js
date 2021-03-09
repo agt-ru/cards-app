@@ -17,29 +17,12 @@ const Header = () => {
           </li>
           <li>
             <Route
-              render={({ history, location }) => (
-                <SearchBox history={history} location={location} />
+              render={({ history, location, match }) => (
+                <SearchBox history={history} location={location} match={match} />
               )}
             />
           </li>
         </ul>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">
-                <i className="fas fa-id-card"></i>
-              </Link>
-            </li>
-            <li>
-              {/* <Link to="https://github.com/agt-ru">
-                <i className="fab fa-github"></i>
-              </Link> */}
-              <a href="https://github.com/agt-ru">
-                <i className="fab fa-github"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
       </div>
     </div>
   );

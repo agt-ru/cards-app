@@ -20,7 +20,7 @@ export const userListReducer = (
         users: action.payload.usersOnPage,
         pages: action.payload.pages,
         page: action.payload.page,
-        pageSize: action.payload.pageSize,
+        usersPerPage: action.payload.usersPerPage,
       };
     case USER_LIST_FAIL:
       return { loading: false, error: action.payload };

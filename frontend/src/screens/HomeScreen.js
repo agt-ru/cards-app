@@ -17,39 +17,46 @@ const HomeScreen = () => {
   let pageNumber = match.params.pageNumber || 1;
   let pageSize = match.params.pageSize || 5;
 
+  const [dropdownValue, setDropdownValue] = useState(pageSize);
+
   const dispatch = useDispatch();
 
   const userList = useSelector((state) => state.userList);
-  const { loading, error, users, page, pages, pageSize } = userList;
-  
+  const { loading, error, users, page, pages, usersPerPage } = userList;
+
   const pageSizeOptions = ["5", "10", "15"];
-// console.log(typeof(pageSize));
   useEffect(() => {
-    dispatch(listUsers(keyword, pageNumber));
-  }, [dispatch, keyword, pageNumber]);
+    dispatch(listUsers(keyword, pageNumber, pageSize));
+  }, [dispatch, keyword, pageNumber, pageSize]);
 
   const changeUsersPerPage = (e) => {
-    // setPageSize(e.value);
-    dispatch(listUsers(keyword, 1, e.value));
-    const urlToGo = (keyword ? `/search/${keyword}` : ``) + `/page/1`;
+    const urlToGo = (keyword ? `/search/${keyword}` : ``) + `/size/${e.value}`;
     history.push(urlToGo);
   };
 
   return (
     <>
-      <Dropdown
-        options={pageSizeOptions}
-        onChange={changeUsersPerPage}
-        value={pageSize}
-        placeholder="Select an option"
-      />
+      <div className="page-size flex align-right">
+        <span>Page Size: </span>
+        <Dropdown
+          options={pageSizeOptions}
+          onChange={changeUsersPerPage}
+          value={usersPerPage}
+          placeholder=""
+        />
+      </div>
+
       <h1>Users</h1>
       {keyword && (
-        <Link to="/" className="btn">
+        <Link
+          to={`/${
+            usersPerPage && (usersPerPage !== 5 ? `size/${usersPerPage}` : "")
+          }`}
+          className="btn"
+        >
           Go Back
         </Link>
       )}
-
       {loading ? (
         <Loader />
       ) : error ? (
@@ -67,6 +74,7 @@ const HomeScreen = () => {
             pages={pages}
             page={page}
             keyword={keyword ? keyword : ""}
+            usersPerPage={usersPerPage}
           />
         </div>
       )}

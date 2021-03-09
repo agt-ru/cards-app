@@ -11,7 +11,6 @@ const reducer = combineReducers({
 const initialState = {
   userList: {
     users: [],
-    pageSize: "10",
   },
 };
 

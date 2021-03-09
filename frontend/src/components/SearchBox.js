@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-const SearchBox = ({ history, location }) => {
+const SearchBox = ({ history, location, match }) => {
   const [keyword, setKeyword] = useState("");
+
+  const userList = useSelector((state) => state.userList);
+  const { usersPerPage } = userList;
+  const pageSize = usersPerPage || 5;
 
   useEffect(() => {
     if (
@@ -15,7 +20,7 @@ const SearchBox = ({ history, location }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
-      history.push(`/search/${keyword.trim()}`);
+      history.push(`/search/${keyword.trim()}/size/${pageSize}`);
       setKeyword(keyword.trim());
     } else {
       history.push(`/`);
@@ -23,7 +28,7 @@ const SearchBox = ({ history, location }) => {
   };
 
   return (
-    <form onSubmit={submitHandler} inline>
+    <form onSubmit={submitHandler}>
       <input
         type="text"
         name="q"
