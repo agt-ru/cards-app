@@ -1,5 +1,7 @@
 # Cards with random people data
 
+## Live version: https://agt-ru-cards-app.herokuapp.com/
+
 ## .env
 
 ```
