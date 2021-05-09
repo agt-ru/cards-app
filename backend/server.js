@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
@@ -27,7 +28,10 @@ app.get("/api", (req, res) => {
     usersMatchCount = users.length;
   }
   const pages = Math.ceil(usersMatchCount / usersPerPage);
-  let usersOnPage = usersMatch.slice((page - 1) * usersPerPage, page * usersPerPage);
+  let usersOnPage = usersMatch.slice(
+    (page - 1) * usersPerPage,
+    page * usersPerPage
+  );
   usersOnPage = usersOnPage.map((user) => ({ ...user, id: user.id["$oid"] }));
   res.json({
     usersOnPage,
