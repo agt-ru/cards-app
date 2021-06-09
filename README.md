@@ -1,5 +1,7 @@
 # Cards with random people data
 ## Live version: https://agt-ru-cards-app.herokuapp.com/
+![screenshot](https://github.com/agt-ru/cards-app/blob/main/cards-app-screenshot.png)
+![screenshot](https://github.com/agt-ru/cards-app/blob/main/cards-app-screenshot2.png)
 ## Features
 - Display cards, each with avatar and info
 - Pagination
