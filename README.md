@@ -1,6 +1,14 @@
 # Cards with random people data
-
 ## Live version: https://agt-ru-cards-app.herokuapp.com/
+## Features
+- Display cards, each with avatar and info
+- Pagination
+- Set cards count per page
+- Search
+- Detailed card info route
+- Responsive layout
+- Frontend: React / Redux
+- Backend: Node / Express
 
 ## .env
 
